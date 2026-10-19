@@ -2,7 +2,7 @@ import React from "react";
 import { CDN_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 
-export const ReturantCard = ({ item }) => {
+const ReturantCard = ({ item }) => {
   const imageUrl = `${CDN_URL}/${item.cloudinaryImageId}`;
 
   return (
@@ -38,3 +38,21 @@ export const ReturantCard = ({ item }) => {
     </div>
   );
 };
+
+// Higher order component
+
+// input- RestaurantCaard ==> restaurantCardPromoted
+
+const withPromotedLabel = (ReturantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Promoted</label>
+        <ReturantCard {...props} />
+      </div>
+    )
+  }
+
+}
+
+export { ReturantCard, withPromotedLabel }
